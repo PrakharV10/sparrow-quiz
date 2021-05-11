@@ -2,14 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base{
+  *{
+    @apply m-0 p-0 box-border
+  }
+
+  body{
+    @apply font-body
+  }
 }
 
-@layer components {
+@layer components{
   .btn{
-    @apply py-2 px-4 
+    @apply py-2 px-4 rounded-sm uppercase min-w-full cursor-pointer
+  }
+
+  .btn-rounded{
+    @apply py-2 px-4 w-40 rounded-full uppercase cursor-pointer
+  }
+
+  .bg-gradient-blue{
+    @apply bg-gradient-to-l from-blue-900 to-blue-800
+  }
+
+  .logo{
+    @apply text-gray-300 font-logo opacity-50 tracking-widest text-sm md:text-xl
+  }
+
+  .input-field{
+    @apply border-0 outline-none rounded-sm bg-white-200 m-auto py-3 px-4 h-14 text-xs placeholder-gray-500 placeholder-opacity-75
   }
 }
