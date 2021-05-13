@@ -5,8 +5,12 @@ module.exports = {
     extend: {
       colors: {
         blue: {
-          900: "#1E3C72",
-          800: "#2A5298"
+          700: "#0173F7"
+        },
+        black:{
+          900: "#16191E",
+          800: "#1D2025",
+          700: "#22252A"
         },
         white: {
           100 : "#FFFFFF",
@@ -15,6 +19,12 @@ module.exports = {
       },
       screens: {
         'xs' : "426px"
+      },
+      borderWidth: {
+        '3' : "3px"
+      },
+      height: {
+        'content' : 'max-content'
       }
     },
     fontFamily: {

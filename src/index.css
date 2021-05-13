@@ -8,21 +8,17 @@
   }
 
   body{
-    @apply font-body
+    @apply font-body min-h-screen h-full
   }
 }
 
 @layer components{
   .btn{
-    @apply py-2 px-4 rounded-sm uppercase min-w-full cursor-pointer
+    @apply py-2 px-4 h-14 rounded-sm uppercase min-w-full cursor-pointer text-white-100 font-medium tracking-wider
   }
 
   .btn-rounded{
     @apply py-2 px-4 w-40 rounded-full uppercase cursor-pointer
-  }
-
-  .bg-gradient-blue{
-    @apply bg-gradient-to-l from-blue-900 to-blue-800
   }
 
   .logo{
@@ -30,6 +26,6 @@
   }
 
   .input-field{
-    @apply border-0 outline-none rounded-sm bg-white-200 m-auto py-3 px-4 h-14 text-xs placeholder-gray-500 placeholder-opacity-75
+    @apply border-0 outline-none rounded-sm bg-black-700 text-white-100 m-auto py-3 px-4 h-14 text-xs placeholder-white-100 placeholder-opacity-75
   }
 }
