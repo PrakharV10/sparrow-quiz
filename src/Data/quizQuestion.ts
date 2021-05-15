@@ -9,18 +9,22 @@ const quizzes: Quizzes = [
                 negativePts : 1,
                 options: [
                     {
+                        id : "0001011",
                         option: "New York",
                         isRight : false
                     },
                     {
+                        id : "0001012",
                         option: "Los Angeles",
                         isRight : false
                     },
                     {
+                        id : "0001013",
                         option: "Chicago",
                         isRight : false
                     },
                     {
+                        id : "0001014",
                         option: "Minsk",
                         isRight : true
                     }
@@ -32,18 +36,22 @@ const quizzes: Quizzes = [
                 negativePts : 1,
                 options: [
                     {
+                        id : "0001021",
                         option: "Collin Jones",
                         isRight : false
                     },
                     {
+                        id : "0001022",
                         option: "Cole Sprouse",
                         isRight : true
                     },
                     {
+                        id : "0001023",
                         option: "Collin Sprouse",
                         isRight : false
                     },
                     {
+                        id : "0001024",
                         option: "Cole Sprouts",
                         isRight : false
                     }
@@ -55,18 +63,22 @@ const quizzes: Quizzes = [
                 negativePts : 1,
                 options: [
                     {
+                        id : "0001031",
                         option: "Way up",
                         isRight : false
                     },
                     {
+                        id : "0001032",
                         option: "No Way",
                         isRight : false
                     },
                     {
+                        id : "0001033",
                         option: "Way No Way",
                         isRight : true
                     },
                     {
+                        id : "0001034",
                         option: "Rossandler",
                         isRight : false
                     }
@@ -78,18 +90,22 @@ const quizzes: Quizzes = [
                 negativePts : 1,
                 options: [
                     {
+                        id : "0001041",
                         option: "Pizza Hut",
                         isRight : true
                     },
                     {
+                        id : "0001042",
                         option: "Bar in Vegas",
                         isRight : false
                     },
                     {
+                        id : "0001043",
                         option: "Vegas club",
                         isRight : false
                     },
                     {
+                        id : "0001044",
                         option: "Dominoes",
                         isRight : false
                     }
@@ -101,18 +117,22 @@ const quizzes: Quizzes = [
                 negativePts : 1,
                 options: [
                     {
+                        id : "0001051",
                         option: "Viva Las Gaygas",
                         isRight : true
                     },
                     {
+                        id : "0001052",
                         option: "Viva Las Vegas",
                         isRight : false
                     },
                     {
+                        id : "0001053",
                         option: "Gay Club",
                         isRight : false
                     },
                     {
+                        id : "0001054",
                         option: "The name wasn't mentioned",
                         isRight : false
                     }
@@ -124,18 +144,22 @@ const quizzes: Quizzes = [
                 negativePts : 1,
                 options: [
                     {
+                        id : "0001061",
                         option: "Athena Greece",
                         isRight : false
                     },
                     {
+                        id : "0001062",
                         option: "Athens, Greece",
                         isRight : true
                     },
                     {
+                        id : "0001063",
                         option: "Tulsa, Oklahoma",
                         isRight : false
                     },
                     {
+                        id : "0001064",
                         option: "Paris, France",
                         isRight : false
                     }
@@ -147,18 +171,22 @@ const quizzes: Quizzes = [
                 negativePts : 1,
                 options: [
                     {
+                        id : "0001071",
                         option: "82",
                         isRight : false
                     },
                     {
+                        id : "0001072",
                         option: "50",
                         isRight : false
                     },
                     {
+                        id : "0001073",
                         option: "70",
                         isRight : false
                     },
                     {
+                        id : "0001074",
                         option: "72",
                         isRight : true
                     }
@@ -170,18 +198,22 @@ const quizzes: Quizzes = [
                 negativePts : 1,
                 options: [
                     {
+                        id : "0001081",
                         option: "Beef",
                         isRight : true
                     },
                     {
+                        id : "0001082",
                         option: "Jam",
                         isRight : false
                     },
                     {
+                        id : "0001083",
                         option: "Whipped Cream",
                         isRight : false
                     },
                     {
+                        id : "0001084",
                         option: "Bread",
                         isRight : false
                     }
@@ -193,18 +225,22 @@ const quizzes: Quizzes = [
                 negativePts : 1,
                 options: [
                     {
+                        id : "0001091",
                         option: "Left",
                         isRight : true
                     },
                     {
+                        id : "0001092",
                         option: "Right",
                         isRight : false
                     },
                     {
+                        id : "0001093",
                         option: "None",
                         isRight : false
                     },
                     {
+                        id : "0001094",
                         option: "Both",
                         isRight : false
                     }
@@ -216,18 +252,22 @@ const quizzes: Quizzes = [
                 negativePts : 1,
                 options: [
                     {
+                        id : "0001101",
                         option: "16",
                         isRight : false
                     },
                     {
+                        id : "0001102",
                         option: "15",
                         isRight : false
                     },
                     {
+                        id : "0001103",
                         option: "14",
                         isRight : true
                     },
                     {
+                        id : "0001104",
                         option: "18",
                         isRight : false
                     }

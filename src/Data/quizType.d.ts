@@ -1,4 +1,5 @@
 type Option = {
+    id: string;
     option: string;
     isRight: boolean;
 }

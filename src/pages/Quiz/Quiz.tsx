@@ -8,7 +8,7 @@ import { initialQuizState, reducerFunction } from '../../reducer/quizReducer';
 function Quiz() {
 
     const { quizId } = useParams();
-    const [{currentQuiz, currentQuestionNumber, questionTimer}, dispatch] = useReducer(reducerFunction, initialQuizState)
+    const [{currentQuiz, currentQuestionNumber, questionTimer, score, selectedOption}, dispatch] = useReducer(reducerFunction, initialQuizState)
 
     useEffect(() => {
         let current = quizzes.find(quiz => quiz.id === quizId)
@@ -17,11 +17,18 @@ function Quiz() {
     }, [quizId])
 
     useEffect(() => {
-        if (questionTimer > 0)
-            setTimeout(() => {
-                dispatch({type : "DECREASE_TIMER"})
-            }, 1000)
-    },[questionTimer])
+        let t = setTimeout(() => {
+            if (questionTimer > 0)
+                dispatch({ type: "DECREASE_TIMER" })
+            else if(questionTimer === 0) {
+                dispatch({ type:"RESET_SELECTED_OPTION"})
+                dispatch({ type: "INCREASE_QUESTION_NUMBER"})
+                dispatch({ type: "RESET_TIMER"})
+            }
+        }, 1000)
+        return () => clearTimeout(t)
+    }, [questionTimer])
+
 
     return (
         <div className="bg-black-800 w-screen h-content min-h-screen md:flex">
@@ -30,8 +37,11 @@ function Quiz() {
                 timer={questionTimer} />}
             
             {currentQuiz && <QuestionOptions
+                selectedOption = {selectedOption}
+                dispatch={dispatch}
                 currentQuiz={currentQuiz}
-                timer = {questionTimer}
+                timer={questionTimer}
+                score= {score}
                 questionNumber={currentQuestionNumber} />}
         </div>
     )
