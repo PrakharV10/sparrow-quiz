@@ -1,7 +1,11 @@
 type InitialQuizState = {
-    currentQuiz: Quiz | null;
+    currentQuiz: Quiz | undefined;
     score: number,
-    currentQuestion: 0;
+    currentQuestionNumber: 0;
+    questionTimer : number
 }
 
-type ActionTypes = {type : "SET_CURRENT_QUIZ", payload : Quiz}
+type ActionTypes =
+    | { type: "SET_CURRENT_QUIZ", payload: Quiz }
+    | { type: "RESET_TIMER" }
+    | { type: "DECREASE_TIMER" }
