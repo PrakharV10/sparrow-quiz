@@ -17,7 +17,7 @@ function Quiz() {
     }, [quizId])
 
     useEffect(() => {
-        let t = setTimeout(() => {
+        const t = setTimeout(() => {
             if (questionTimer > 0)
                 dispatch({ type: "DECREASE_TIMER" })
             else if(questionTimer === 0) {
