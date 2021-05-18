@@ -7,7 +7,7 @@ import { TwitterShareButton, FacebookShareButton, WhatsappShareButton } from 're
 
 function Result() {
     return (
-        <div className="bg-black-900 w-screen min-h-screen h-full">
+        <div className="bg-black-800 w-screen min-h-screen h-full">
             <header className="h-14 w-full flex justify-center items-center mb-4 lg:pt-9 lg:mb-14"> 
                 <div className="text-white-100 font-semibold text-xl md:text-2xl lg:text-3xl">RESULTS</div>
             </header>
