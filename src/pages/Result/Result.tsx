@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Trophy from '../../assets/images/Trophy png (1).png'
 import Twitter from '../../assets/images/logos_twitter.png'
 import Facebook from '../../assets/images/bi_facebook.png'
@@ -6,6 +6,16 @@ import Whatsapp from '../../assets/images/dashicons_whatsapp.png'
 import { TwitterShareButton, FacebookShareButton, WhatsappShareButton } from 'react-share';
 
 function Result() {
+
+    const [score, setScore] = useState<number>(0);
+
+    useEffect(() => {
+        let memory = localStorage.getItem('score')
+        if (typeof memory === 'string') {
+            setScore(JSON.parse(memory).score)
+        }
+    }, [])
+
     return (
         <div className="bg-black-800 w-screen min-h-screen h-full">
             <header className="h-14 w-full flex justify-center items-center mb-4 lg:pt-9 lg:mb-14"> 
@@ -15,7 +25,7 @@ function Result() {
                 <section className="w-56 m-auto h-56 bg-black-700 flex flex-col justify-center items-center mb-16 lg:w-72 lg:h-72 lg:mb-12">
                     <img src={Trophy} alt="trophy" className="w-20 h-20 mb-5 lg:w-28 lg:h-28" />
                     <div className="text-center text-4xl font-semibold text-white-100 flex flex-col">
-                        <div>320</div>
+                        <div>{score}</div>
                         <span className="text-sm font-light">Points</span>
                     </div>
                 </section>

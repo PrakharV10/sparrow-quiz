@@ -14,6 +14,8 @@ type Question = {
 type Quiz = {
     id: string;
     topic: string;
+    image: string;
+    maximum: number;
     questions: Question[];
 }
 

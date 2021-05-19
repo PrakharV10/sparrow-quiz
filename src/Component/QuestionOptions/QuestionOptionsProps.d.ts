@@ -5,4 +5,5 @@ type QuestionOptionsProps = {
     score: number;
     dispatch: Dispatch;
     selectedOption: Option | undefined;
+    quizId: string;
 }

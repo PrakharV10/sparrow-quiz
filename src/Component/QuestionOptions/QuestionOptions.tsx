@@ -1,16 +1,23 @@
 import React from 'react'
+import { useNavigate } from 'react-router'
 import updateScore from '../../utils/updateScore.util'
 
-function QuestionOptions({ questionNumber, currentQuiz, timer, score, selectedOption, dispatch }: QuestionOptionsProps) {
+function QuestionOptions({ questionNumber, currentQuiz, timer, score, selectedOption, dispatch, quizId }: QuestionOptionsProps) {
 
-    
+    const navigate = useNavigate();
+
     function nextButtonHandler() {
         if (selectedOption !== undefined) {
             const response = updateScore(score, currentQuiz.questions[questionNumber], selectedOption)
             dispatch({ type: "RESET_SELECTED_OPTION"})
             dispatch({ type: "SET_SCORE", payload: response })
-            dispatch({ type: "INCREASE_QUESTION_NUMBER" })
-            dispatch({ type: "RESET_TIMER" })
+            if (questionNumber + 1 === currentQuiz.questions.length) {
+                localStorage.setItem('score', JSON.stringify({ score: score }));
+                navigate(`/quiz/${quizId}/result`)
+            } else {
+                dispatch({ type: "INCREASE_QUESTION_NUMBER" })
+                dispatch({ type: "RESET_TIMER" })
+            }
         }
     }
 
@@ -42,20 +49,24 @@ function QuestionOptions({ questionNumber, currentQuiz, timer, score, selectedOp
                         <div
                             onClick={() => dispatch({ type: "SET_SELECTED_OPTION", payload: option })}
                             key={option.id}
-                            className={`${option.id === selectedOption?.id ? "bg-blue-700" : "bg-black-700"} pl-6 py-5 mb-4 text-sm font-light lg:pl-10 lg:text-lg text-white-100 opacity-90 cursor-pointer transition-colors`}
+                            className={`${option.id === selectedOption?.id ? "bg-blue-700" : "bg-black-700"} px-6 py-5 mb-4 text-sm font-light lg:pl-10 lg:text-lg text-white-100 opacity-90 cursor-pointer transition-colors`}
                         >
                             <span className="font-medium">{index+1}.</span> {option.option}
                         </div>
                     )
                 })
             }
-            <button
-                onClick={nextButtonHandler}
-                disabled={selectedOption !== undefined ? false : true}
-                className="btn bg-blue-700 rounded-sm h-10 w-24 mt-2 min-w-0 float-right md:w-36 md:h-12 md:font-bold lg:absolute lg:bottom-10 lg:right-16 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-                NEXT
-            </button>   
+
+            <div className="flex justify-between items-center mt-2 md:absolute md:bottom-10 md:right-10 md:left-10 lg:right-16 lg:left-16">
+                <span className={`${score >= 0 ? `text-green-500` : `text-red-500`} font-medium lg:text-xl`}>Score : {score}</span>
+                <button
+                    onClick={nextButtonHandler}
+                    disabled={selectedOption !== undefined ? false : true}
+                    className="btn bg-blue-700 rounded-sm h-10 w-24 mt-2 min-w-0 md:w-36 md:h-12 md:font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    NEXT
+                </button>   
+            </div>
             </div>
     )
 }

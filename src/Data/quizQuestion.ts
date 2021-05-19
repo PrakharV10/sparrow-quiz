@@ -1,7 +1,9 @@
 const quizzes: Quizzes = [
     {
         id : "0001",
-        topic: "Friends Series",
+        topic: "The one with the Quiz!",
+        image: "https://i.pinimg.com/736x/89/58/97/895897b7c1a99c6310ab304fb38b2281.jpg",
+        maximum: 40,
         questions: [
             {
                 question: "Phoebe’s scientist boyfriend David worked in what city?",
@@ -269,6 +271,149 @@ const quizzes: Quizzes = [
                     {
                         id : "0001104",
                         option: "18",
+                        isRight : false
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        id : "0002",
+        topic: "Know your Blender!",
+        image: "https://i.pinimg.com/736x/d9/f2/4e/d9f24e6d6a010e285f093294bb05689b.jpg",
+        maximum: 10,
+        questions: [
+            {
+                question: "How do you view the tools window of a selected 3D object?",
+                pts: 2,
+                negativePts : 0,
+                options: [
+                    {
+                        id : "0002011",
+                        option: "Press the Space Bar",
+                        isRight : false
+                    },
+                    {
+                        id : "0002012",
+                        option: "Press the Q key",
+                        isRight : false
+                    },
+                    {
+                        id : "0002013",
+                        option: "Press the T key",
+                        isRight : true
+                    },
+                    {
+                        id : "0002014",
+                        option: "Press the O key",
+                        isRight : false
+                    }
+                ]
+            },
+            {
+                question: "How do you connect two vertex with an edge?",
+                pts: 2,
+                negativePts : 0,
+                options: [
+                    {
+                        id : "0002021",
+                        option: "Select the vertex and press SPACE",
+                        isRight : false
+                    },
+                    {
+                        id : "0002022",
+                        option: "Select the vertex and press E",
+                        isRight : false
+                    },
+                    {
+                        id : "0002023",
+                        option: "Select the vertex and press F",
+                        isRight : true
+                    },
+                    {
+                        id : "0002024",
+                        option: "Select the vertex and press V",
+                        isRight : false
+                    }
+                ]
+            },
+            {
+                question: "How do you add a keyframe to the selected object?",
+                pts: 2,
+                negativePts : 0,
+                options: [
+                    {
+                        id : "0002031",
+                        option: "Press the F key",
+                        isRight : false
+                    },
+                    {
+                        id : "0002032",
+                        option: "Press the k key",
+                        isRight : false
+                    },
+                    {
+                        id : "0002033",
+                        option: "Press the I key",
+                        isRight : true
+                    },
+                    {
+                        id : "0002034",
+                        option: "Press the A key",
+                        isRight : false
+                    }
+                ]
+            },
+            {
+                question: "What is the relationship between Vertices, Edges, and Faces?",
+                pts: 2,
+                negativePts : 0,
+                options: [
+                    {
+                        id : "0002041",
+                        option: "Vertices are made with edges and Faces",
+                        isRight : false
+                    },
+                    {
+                        id : "0002042",
+                        option: "Each type of polygonal sub-object type is part of the whole ",
+                        isRight : true
+                    },
+                    {
+                        id : "0002043",
+                        option: "Each texture of the selected 3D object is part of the whole ",
+                        isRight : false
+                    },
+                    {
+                        id : "0002044",
+                        option: "None of the above",
+                        isRight : false
+                    }
+                ]
+            },
+            {
+                question: "How do you place the 3D cursor?",
+                pts: 2,
+                negativePts : 0,
+                options: [
+                    {
+                        id : "0002051",
+                        option: "Left mouse button on 3D view",
+                        isRight : true
+                    },
+                    {
+                        id : "0002052",
+                        option: "Right mouse button on 3D view",
+                        isRight : false
+                    },
+                    {
+                        id : "0002053",
+                        option: "Left mouse button and C key.",
+                        isRight : false
+                    },
+                    {
+                        id : "0002054",
+                        option: "None of the above",
                         isRight : false
                     }
                 ]

@@ -41,7 +41,8 @@ function Quiz() {
                 dispatch={dispatch}
                 currentQuiz={currentQuiz}
                 timer={questionTimer}
-                score= {score}
+                score={score}
+                quizId={quizId}
                 questionNumber={currentQuestionNumber} />}
         </div>
     )

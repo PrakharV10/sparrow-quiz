@@ -10,19 +10,19 @@ function Sidebar({ setShowSidebar, showSidebar }: SidebarProps) {
     }
 
     return (
-        <div className={`w-80 h-screen transition-all duration-300 fixed top-0 left-0 bg-black-700 ${!showSidebar ? "transform -translate-x-full opacity-0 md:-translate-x-0 md:opacity-100" : "transform translate-x-0 opacity-100"}`}>
+        <div className={`w-80 h-screen transition-all duration-300 fixed top-0 left-0 z-50 bg-black-700 ${!showSidebar ? "transform -translate-x-full opacity-0 md:-translate-x-0 md:opacity-100" : "transform translate-x-0 opacity-100"}`}>
             <span className="md:hidden" onClick = {() => setShowSidebar(false)}><Exit /></span>
             <div className="pt-8 flex flex-col items-center mb-9 md:pt-12">
                 <img 
                     className="avatar-lg mb-4"
                     src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80" alt="avatar" 
                 />
-                <div className="text-lg text-white-100">
+                <div className="text-lg text-white-100 md:font-bold">
                     Alexander Fernandis
                 </div>
             </div>
 
-            <nav className="mb-16">
+            <nav className="mb-16 md:mb-24">
                 <ul className="text-center text-white-100 text-lg">
                     <li className="p-6">
                         <NavLink to="/dashboard" className="w-full" activeStyle={activeStyle}>
@@ -48,7 +48,7 @@ function Sidebar({ setShowSidebar, showSidebar }: SidebarProps) {
 
             </nav>
             <div className="text-center">
-                <button className="btn bg-blue-700 min-w-0 w-28 h-10">SIGNOUT</button>
+                <button className="btn bg-blue-700 min-w-0 w-28 h-10 md:h-12 md:w-40">SIGNOUT</button>
             </div>
         </div>
     )
