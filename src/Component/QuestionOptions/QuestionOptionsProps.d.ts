@@ -6,4 +6,5 @@ type QuestionOptionsProps = {
     dispatch: Dispatch;
     selectedOption: Option | undefined;
     quizId: string;
+    isClicked: boolean;
 }

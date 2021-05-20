@@ -3,12 +3,12 @@ import { useParams } from 'react-router'
 import QuestionOptions from '../../Component/QuestionOptions/QuestionOptions';
 import QuestionSideBar from '../../Component/QuestionSideBar/QuestionSideBar'
 import { quizzes } from '../../Data/quizQuestion';
-import { initialQuizState, reducerFunction } from '../../reducer/quizReducer';
+import { initialQuizState, quizReducer } from '../../reducer/quizReducer';
 
 function Quiz() {
 
     const { quizId } = useParams();
-    const [{currentQuiz, currentQuestionNumber, questionTimer, score, selectedOption}, dispatch] = useReducer(reducerFunction, initialQuizState)
+    const [{currentQuiz, currentQuestionNumber, questionTimer, score, selectedOption, isClicked}, dispatch] = useReducer(quizReducer, initialQuizState)
 
     useEffect(() => {
         let current = quizzes.find(quiz => quiz.id === quizId)
@@ -43,6 +43,7 @@ function Quiz() {
                 timer={questionTimer}
                 score={score}
                 quizId={quizId}
+                isClicked={isClicked}
                 questionNumber={currentQuestionNumber} />}
         </div>
     )

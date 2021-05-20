@@ -4,17 +4,21 @@ import Twitter from '../../assets/images/logos_twitter.png'
 import Facebook from '../../assets/images/bi_facebook.png'
 import Whatsapp from '../../assets/images/dashicons_whatsapp.png'
 import { TwitterShareButton, FacebookShareButton, WhatsappShareButton } from 'react-share';
+import { useParams } from 'react-router'
 
 function Result() {
 
     const [score, setScore] = useState<number>(0);
+    const { quizId } = useParams();
 
     useEffect(() => {
-        let memory = localStorage.getItem('score')
+        let memory = localStorage.getItem('result')
         if (typeof memory === 'string') {
-            setScore(JSON.parse(memory).score)
+            let memoryObj = JSON.parse(memory)
+            if (memoryObj.quizId === quizId)
+                setScore(memoryObj.score)
         }
-    }, [])
+    }, [quizId])
 
     return (
         <div className="bg-black-800 w-screen min-h-screen h-full">

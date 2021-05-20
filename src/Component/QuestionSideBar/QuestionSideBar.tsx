@@ -3,7 +3,7 @@ import { buildStyles, CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css';
 
 
-function QuestionSideBar({ topic, timer}: QuestionSideBarProps) {
+function QuestionSideBar({ topic, timer }: QuestionSideBarProps) {
     
     return (
         <div className="bg-black-700 pt-10 pb-9 flex-col justify-between items-center hidden md:flex md:w-2/5 xl:w-1/3 h-screen">

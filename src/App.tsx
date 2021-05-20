@@ -1,12 +1,19 @@
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import Quiz from './pages/Quiz/Quiz';
 import Result from './pages/Result/Result';
 import Signup from './pages/Signup/Signup';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 
 function App() {
+
+  useEffect(() => {
+    
+  })
+
   return (
     <div className="App">
       <Routes>

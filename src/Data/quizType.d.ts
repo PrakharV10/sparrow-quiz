@@ -20,3 +20,12 @@ type Quiz = {
 }
 
 type Quizzes = Quiz[]
+
+
+type User = {
+    userId: string
+    email: string;
+    password: string;
+}
+
+type UserTable = User[]

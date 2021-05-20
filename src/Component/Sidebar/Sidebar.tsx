@@ -1,12 +1,22 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Exit from '../../assets/svg/exit'
+import { useAuth } from '../../context/context';
 
 function Sidebar({ setShowSidebar, showSidebar }: SidebarProps) {
     
     let activeStyle = {
         color: "#0173F7",
         fontWeight: "700"
+    }
+
+    const { authDispatch } = useAuth();
+    const navigate = useNavigate();
+
+    function logOutHandler() {
+        authDispatch({ type: "LOGOUT_USER" })
+        localStorage.removeItem('Login')
+        navigate('/login')
     }
 
     return (
@@ -48,7 +58,7 @@ function Sidebar({ setShowSidebar, showSidebar }: SidebarProps) {
 
             </nav>
             <div className="text-center">
-                <button className="btn bg-blue-700 min-w-0 w-28 h-10 md:h-12 md:w-40">SIGNOUT</button>
+                <button onClick={logOutHandler} className="btn bg-blue-700 min-w-0 w-28 h-10 md:h-12 md:w-40">SIGNOUT</button>
             </div>
         </div>
     )

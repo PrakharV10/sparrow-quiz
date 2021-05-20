@@ -5,16 +5,19 @@ const SET_SCORE = "SET_SCORE";
 const INCREASE_QUESTION_NUMBER = "INCREASE_QUESTION_NUMBER";
 const RESET_SELECTED_OPTION = "RESET_SELECTED_OPTION";
 const SET_SELECTED_OPTION = "SET_SELECTED_OPTION";
+const REGISTER_CLICK_ONCE = "REGISTER_CLICK_ONCE";
+const RESET_REGISTERED_CLICK = "RESET_REGISTERED_CLICK"
 
 export const initialQuizState: InitialQuizState = {
     currentQuiz : undefined,
     score: 0,
     currentQuestionNumber: 0,
     questionTimer: 90,
-    selectedOption : undefined
+    selectedOption: undefined,
+    isClicked: false
 }
 
-export function reducerFunction(state : InitialQuizState, action : ActionTypes){
+export function quizReducer(state : InitialQuizState, action : QuizActionTypes){
     switch (action.type) {
         case SET_CURRENT_QUIZ:
             return { ...state, currentQuiz: action.payload }
@@ -29,7 +32,11 @@ export function reducerFunction(state : InitialQuizState, action : ActionTypes){
         case RESET_SELECTED_OPTION:
             return { ...state, selectedOption: undefined }
         case SET_SELECTED_OPTION:
-            return {...state, selectedOption : action.payload}
+            return { ...state, selectedOption: action.payload }
+        case REGISTER_CLICK_ONCE:
+            return { ...state, isClicked: true }
+        case RESET_REGISTERED_CLICK:
+            return { ...state, isClicked: false}
         default:
             return state
     }   

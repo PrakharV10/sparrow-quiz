@@ -1,8 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
+import correct from '../../assets/svg/correct';
 import updateScore from '../../utils/updateScore.util'
 
-function QuestionOptions({ questionNumber, currentQuiz, timer, score, selectedOption, dispatch, quizId }: QuestionOptionsProps) {
+function QuestionOptions({ questionNumber, currentQuiz, timer, score, selectedOption, dispatch, quizId, isClicked }: QuestionOptionsProps) {
 
     const navigate = useNavigate();
 
@@ -11,8 +12,9 @@ function QuestionOptions({ questionNumber, currentQuiz, timer, score, selectedOp
             const response = updateScore(score, currentQuiz.questions[questionNumber], selectedOption)
             dispatch({ type: "RESET_SELECTED_OPTION"})
             dispatch({ type: "SET_SCORE", payload: response })
+            dispatch({ type: "RESET_REGISTERED_CLICK"})
             if (questionNumber + 1 === currentQuiz.questions.length) {
-                localStorage.setItem('score', JSON.stringify({ score: score }));
+                localStorage.setItem('result', JSON.stringify({ quizId, score }));
                 navigate(`/quiz/${quizId}/result`)
             } else {
                 dispatch({ type: "INCREASE_QUESTION_NUMBER" })
@@ -21,6 +23,19 @@ function QuestionOptions({ questionNumber, currentQuiz, timer, score, selectedOp
         }
     }
 
+    function optionClickHandler(option : Option) {
+        if (isClicked)
+            return
+        dispatch({ type: "REGISTER_CLICK_ONCE"})
+        dispatch({ type: "SET_SELECTED_OPTION", payload: option })
+    }
+
+    function showCorrect(option : Option) {
+        if (option.isRight && isClicked)
+            return correct()
+        else
+            return null
+    }
 
     return (
         <div className="px-7 pt-5 relative min-h-screen h-content md:w-3/5 xl:w-2/3 md:px-10 md:pt-10 xl:px-16">
@@ -47,11 +62,16 @@ function QuestionOptions({ questionNumber, currentQuiz, timer, score, selectedOp
                 currentQuiz?.questions[questionNumber].options.map((option, index) => {
                     return (
                         <div
-                            onClick={() => dispatch({ type: "SET_SELECTED_OPTION", payload: option })}
+                            onClick={() => optionClickHandler(option)}
                             key={option.id}
-                            className={`${option.id === selectedOption?.id ? "bg-blue-700" : "bg-black-700"} px-6 py-5 mb-4 text-sm font-light lg:pl-10 lg:text-lg text-white-100 opacity-90 cursor-pointer transition-colors`}
+                            className={`${option.id === selectedOption?.id ? "border-blue-700" : "border-black-700"} border-4 flex justify-between items-center bg-black-700 pr-6 pl-2 py-5 mb-4 text-sm font-light lg:pl-10 lg:text-lg text-white-100 opacity-90 cursor-pointer transition-colors`}
                         >
-                            <span className="font-medium">{index+1}.</span> {option.option}
+                            <div className="pl-4">
+                                <span className="font-medium">{index + 1}.</span> {option.option}
+                            </div>
+                            {
+                                showCorrect(option)
+                            }
                         </div>
                     )
                 })
@@ -64,7 +84,7 @@ function QuestionOptions({ questionNumber, currentQuiz, timer, score, selectedOp
                     disabled={selectedOption !== undefined ? false : true}
                     className="btn bg-blue-700 rounded-sm h-10 w-24 mt-2 min-w-0 md:w-36 md:h-12 md:font-bold disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    NEXT
+                    {questionNumber + 1 !== currentQuiz.questions.length ? `NEXT` : `FINISH`}
                 </button>   
             </div>
             </div>
