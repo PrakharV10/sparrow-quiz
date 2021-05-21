@@ -1,10 +1,11 @@
 type QuestionOptionsProps = {
-    questionNumber: number;
-    timer: number;
-    currentQuiz: Quiz;
-    score: number;
-    dispatch: Dispatch;
-    selectedOption: Option | undefined;
-    quizId: string;
-    isClicked: boolean;
-}
+	questionNumber: number;
+	timer: number;
+	currentQuiz: Quiz;
+	score: number;
+	dispatch: Dispatch;
+	selectedOption: Option | undefined;
+	quizId: string;
+	isClicked: boolean;
+	setIsOpen: React.Dispatch;
+};

@@ -4,10 +4,6 @@ type LocalInitialStateType = {
     loading: boolean;
 }
 
-type UseLocationState = {
-    state: {
-        from: {
-            path: string;
-        }
-    }
+type LocationState = {
+    from: string;
 }
