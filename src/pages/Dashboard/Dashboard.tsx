@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Menu from '../../assets/svg/Menu';
 import QuizCard from '../../Component/QuizCard/QuizCard';
 import Sidebar from '../../Component/Sidebar/Sidebar';
 import { quizzes } from '../../Data/quizQuestion';
 
-function Dashboard() {
-	const [showSidebar, setShowSidebar] = useState<boolean>(false);
-
+function Dashboard({ showSidebar, setShowSidebar }: SidebarPassingProps) {
 	return (
 		<div className="bg-black-800 w-screen min-h-screen">
 			<Sidebar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />

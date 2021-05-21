@@ -15,7 +15,7 @@ function Login() {
 				<p className="text-sm font-light text-gray-300 pt-4 w-full md:mb-14 xl:w-4/5 xl:text-lg">
 					We know you loved your previous experience, and are back for some more...
 					<br />
-					Check out the new Quizes we have in store for you. Did you beat your personal
+					Check out the new Quizzes we have in store for you. Did you beat your personal
 					best yet?
 				</p>
 				<div className="hidden text-white-100 opacity-80 md:block md:font-extralight md:text-sm xl:text-base xl:font-light">

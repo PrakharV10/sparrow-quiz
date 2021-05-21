@@ -42,22 +42,42 @@ function Sidebar({ setShowSidebar, showSidebar }: SidebarProps) {
 			<nav className="mb-16 md:mb-24">
 				<ul className="text-center text-white-100 text-base font-light tracking-widest">
 					<li className="h-16 flex justify-center items-center">
-						<NavLink to="/dashboard" className="w-full p-4" activeStyle={activeStyle}>
+						<NavLink
+							to="/dashboard"
+							onClick={() => setShowSidebar(false)}
+							className="w-full p-4"
+							activeStyle={activeStyle}
+						>
 							HOME
 						</NavLink>
 					</li>
 					<li className="h-16 flex justify-center items-center">
-						<NavLink to="/learn" className="w-full p-4" activeStyle={activeStyle}>
+						<NavLink
+							to="/learn"
+							onClick={() => setShowSidebar(false)}
+							className="w-full p-4"
+							activeStyle={activeStyle}
+						>
 							LEARN
 						</NavLink>
 					</li>
 					<li className="h-16 flex justify-center items-center">
-						<NavLink to="/account" className="w-full p-4" activeStyle={activeStyle}>
+						<NavLink
+							to="/account"
+							onClick={() => setShowSidebar(false)}
+							className="w-full p-4"
+							activeStyle={activeStyle}
+						>
 							ACCOUNT
 						</NavLink>
 					</li>
 					<li className="h-16 flex justify-center items-center">
-						<NavLink to="/leaderboard" className="w-full p-4" activeStyle={activeStyle}>
+						<NavLink
+							to="/leaderboard"
+							onClick={() => setShowSidebar(false)}
+							className="w-full p-4"
+							activeStyle={activeStyle}
+						>
 							LEADERBOARD
 						</NavLink>
 					</li>
@@ -66,7 +86,7 @@ function Sidebar({ setShowSidebar, showSidebar }: SidebarProps) {
 			<div className="text-center">
 				<button
 					onClick={logOutHandler}
-					className="btn bg-blue-700 min-w-0 w-28 h-10 md:h-12 md:w-40"
+					className="btn bg-blue-700 text-blue-100 min-w-0 w-28 text-md font-medium h-10 md:h-12 md:w-40 hover:bg-blue-600"
 				>
 					SIGNOUT
 				</button>
