@@ -44,7 +44,7 @@ function Result() {
 
 				<section className="flex justify-between items-center w-56 m-auto mb-10 lg:mb-10">
 					<TwitterShareButton
-						title={`Hey Everyone! I just got 320 points, in the friends quiz on sparrow. I challenge you all to beat my score!!\nLink -`}
+						title={`Hey Everyone! I just got ${score} points, in the friends quiz on sparrow. I challenge you all to beat my score!!\nLink -`}
 						url="https://sparrow-store.netlify.app"
 					>
 						<img
@@ -56,7 +56,7 @@ function Result() {
 					</TwitterShareButton>
 
 					<FacebookShareButton
-						quote={`Hey Everyone! I just got 320 points, in the friends quiz on sparrow. I challenge you all to beat my score!!\n Try it out here-`}
+						quote={`Hey Everyone! I just got ${score} points, in the friends quiz on sparrow. I challenge you all to beat my score!!\n Try it out here-`}
 						url="https://sparrow-store.netlify.app"
 					>
 						<img
@@ -68,7 +68,7 @@ function Result() {
 
 					<WhatsappShareButton
 						url="https://sparrow-store.netlify.app"
-						title={`Hey Everyone! I just got 320 points, in the friends quiz on sparrow. I challenge you all to beat my score!!\nTry it out here -`}
+						title={`Hey Everyone! I just got ${score} points, in the friends quiz on sparrow. I challenge you all to beat my score!!\nTry it out here -`}
 					>
 						<img
 							src={Whatsapp}
