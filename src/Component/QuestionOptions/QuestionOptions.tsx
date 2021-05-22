@@ -48,7 +48,7 @@ function QuestionOptions({
 	}
 
 	return (
-		<div className="px-7 pt-5 relative min-h-screen h-content md:w-3/5 xl:w-2/3 md:px-10 md:pt-10 xl:px-16">
+		<div className="px-7 pt-5 relative min-h-screen h-content max-h-screen overflow-auto md:w-3/5 xl:w-2/3 md:px-10 md:pt-10 xl:px-16">
 			<header className="flex justify-between items-center pb-8 md:hidden">
 				<svg
 					onClick={() => setIsOpen(true)}
@@ -100,7 +100,7 @@ function QuestionOptions({
 				);
 			})}
 
-			<div className="flex justify-between items-center mt-2 md:absolute md:bottom-10 md:right-10 md:left-10 lg:right-16 lg:left-16">
+			<div className="flex justify-between items-center mt-2 mb-8 md:mt-12">
 				<span
 					className={`${
 						score >= 0 ? `text-green-500` : `text-red-500`
