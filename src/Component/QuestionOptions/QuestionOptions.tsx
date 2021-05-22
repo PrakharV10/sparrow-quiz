@@ -100,7 +100,7 @@ function QuestionOptions({
 				);
 			})}
 
-			<div className="flex justify-between items-center mt-2 mb-8 md:mt-12">
+			<div className="flex justify-between items-center mt-2 mb-8 md:mt-12 xl:mt-20">
 				<span
 					className={`${
 						score >= 0 ? `text-green-500` : `text-red-500`
