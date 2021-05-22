@@ -1,8 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import LoginForm from '../../Component/LoginForm/LoginForm';
+import { useAuth } from '../../context/context';
 
 function Login() {
+	const {
+		authState: { isUserLoggedIn },
+	} = useAuth();
+
+	let navigate = useNavigate();
+	let location = useLocation();
+
+	const state = (location.state as LocationState) || null;
+
+	useEffect(() => {
+		isUserLoggedIn && navigate(state?.from ? state.from : '/dashboard');
+	}, [isUserLoggedIn]);
+
 	return (
 		<div className="min-w-screen min-h-screen flex flex-col md:flex-row">
 			<div className="bg-black-700 h-64 py-4 px-7 w-full flex flex-col justify-center items-center md:h-screen md:w-2/4 md:relative md:items-start xl:p-24 ">

@@ -1,6 +1,7 @@
 const CHECK_LOGIN_DETAILS = 'CHECK_LOGIN_DETAILS';
 const LOGOUT_USER = 'LOGOUT_USER';
 const LOGIN_ON_START = 'LOGIN_ON_START';
+const REGISTER_NEW_USER = 'REGISTER_NEW_USER';
 
 export const initialAuthState: InitialAuthState = {
 	isUserLoggedIn: false,
@@ -23,6 +24,8 @@ export function authReducer(state: InitialAuthState, action: AuthActionTypes) {
 				isUserLoggedIn: true,
 				userId: action.payload.response,
 			};
+		case REGISTER_NEW_USER:
+			return { ...state, isUserLoggedIn: true, userId: action.payload.response };
 		default:
 			return state;
 	}

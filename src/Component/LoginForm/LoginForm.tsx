@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/context';
 import { userTable } from '../../Data/userTable';
 
 function LoginForm() {
-	const {
-		authState: { isUserLoggedIn },
-		authDispatch,
-	} = useAuth();
+	const { authDispatch } = useAuth();
 	const navigate = useNavigate();
-	const location = useLocation();
-	const state = (location.state as LocationState) || null;
-
-	useEffect(() => {
-		isUserLoggedIn && navigate(state?.from ? state.from : '/dashboard');
-	}, [isUserLoggedIn]);
 
 	const localInputInitialState: LocalInitialStateType = {
 		email: '',

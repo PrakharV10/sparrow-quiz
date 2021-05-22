@@ -1,7 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import SignupForm from '../../Component/SignupForm/SignupForm';
+import { useAuth } from '../../context/context';
 
 function Signup() {
+	const {
+		authState: { isUserLoggedIn },
+	} = useAuth();
+
+	let navigate = useNavigate();
+	let location = useLocation();
+
+	const state = (location.state as LocationState) || null;
+
+	useEffect(() => {
+		isUserLoggedIn && navigate(state?.from ? state.from : '/dashboard');
+	}, [isUserLoggedIn]);
+
 	return (
 		<div className="min-w-screen min-h-screen h-content flex flex-col md:flex-row bg-black-800">
 			<div className="bg-black-700 h-64 py-4 px-7 w-full flex flex-col justify-center items-center md:h-screen md:w-2/4 md:relative md:items-start xl:p-24 ">
@@ -25,38 +40,7 @@ function Signup() {
 				</div>
 			</div>
 			<div className="bg-black-800 h-full pt-12 flex-grow md:flex md:w-2/4 md:h-screen md:flex-col md:justify-center md:items-center xl:px-20">
-				<form className="text-center w-full px-7">
-					<header className="hidden text-white-100 mb-10 text-light md:block md:text-2xl xl:text-3xl">
-						Create Account
-					</header>
-					<input
-						type="text"
-						placeholder="Name"
-						className="input-field w-full mb-6 md:mb-5"
-						required
-					/>
-					<input
-						type="mail"
-						placeholder="Email"
-						className="input-field w-full mb-6 md:mb-5"
-						required
-					/>
-					<input
-						type="password"
-						placeholder="Password"
-						className="input-field w-full mb-7 md:mb-5"
-						required
-					/>
-					<button className="btn bg-blue-700 mb-7 hover:bg-blue-800 transition-colors">
-						SIGNUP
-					</button>
-					<div className="text-sm text-white-100 font-regular opacity-70 mb-4 md:hidden">
-						Already have an account ?{' '}
-						<span className="font-semibold">
-							<Link to="/login">Login here.</Link>
-						</span>
-					</div>
-				</form>
+				<SignupForm />
 			</div>
 		</div>
 	);

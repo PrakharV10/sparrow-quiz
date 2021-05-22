@@ -23,7 +23,7 @@ type InitialAuthState = {
 };
 
 type AuthActionTypes =
-	| { type: 'REGISTER_NEW_USER' }
+	| { type: 'REGISTER_NEW_USER'; payload: { response: string } }
 	| { type: 'CHECK_LOGIN_DETAILS'; payload: { response: string } }
 	| { type: 'LOGOUT_USER' }
 	| { type: 'LOGIN_ON_START'; payload: { response: string } };
