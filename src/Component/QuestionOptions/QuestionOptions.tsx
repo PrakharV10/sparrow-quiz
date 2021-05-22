@@ -16,30 +16,30 @@ function QuestionOptions({
 }: QuestionOptionsProps) {
 	const navigate = useNavigate();
 
+	function calculateAndUpdateScore(option: Option) {
+		const response = updateScore(score, currentQuiz.questions[questionNumber], option);
+		dispatch({
+			type: 'SET_SELECTED_OPTION_AND_SCORE',
+			payload: { option, score: response },
+		});
+	}
+
 	function nextButtonHandler() {
-		if (selectedOption !== undefined) {
-			const response = updateScore(
-				score,
-				currentQuiz.questions[questionNumber],
-				selectedOption
-			);
-			dispatch({ type: 'RESET_SELECTED_OPTION' });
-			dispatch({ type: 'SET_SCORE', payload: response });
-			dispatch({ type: 'RESET_REGISTERED_CLICK' });
-			if (questionNumber + 1 === currentQuiz.questions.length) {
-				localStorage.setItem('result', JSON.stringify({ quizId, score }));
-				navigate(`/quiz/${quizId}/result`);
-			} else {
-				dispatch({ type: 'INCREASE_QUESTION_NUMBER' });
-				dispatch({ type: 'RESET_TIMER' });
-			}
+		dispatch({ type: 'RESET_SELECTED_OPTION' });
+		dispatch({ type: 'RESET_REGISTERED_CLICK' });
+		if (questionNumber + 1 === currentQuiz.questions.length) {
+			localStorage.setItem('result', JSON.stringify({ quizId, score }));
+			navigate(`/quiz/${quizId}/result`);
+		} else {
+			dispatch({ type: 'INCREASE_QUESTION_NUMBER' });
+			dispatch({ type: 'RESET_TIMER' });
 		}
 	}
 
 	function optionClickHandler(option: Option) {
 		if (isClicked) return;
+		calculateAndUpdateScore(option);
 		dispatch({ type: 'REGISTER_CLICK_ONCE' });
-		dispatch({ type: 'SET_SELECTED_OPTION', payload: option });
 	}
 
 	function showCorrect(option: Option) {
