@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Exit from '../../assets/svg/exit';
 import { useAuth } from '../../context/context';
@@ -12,12 +12,20 @@ function Sidebar({ setShowSidebar, showSidebar }: SidebarProps) {
 
 	const { authDispatch } = useAuth();
 	const navigate = useNavigate();
+	const [currentUser, setCurrentUser] = useState();
 
 	function logOutHandler() {
 		authDispatch({ type: 'LOGOUT_USER' });
 		localStorage.removeItem('Login');
 		navigate('/login');
 	}
+
+	useEffect(() => {
+		const memory = localStorage.getItem('Login');
+		if (memory) {
+			setCurrentUser(JSON.parse(memory).username);
+		}
+	}, []);
 
 	return (
 		<div
@@ -36,7 +44,9 @@ function Sidebar({ setShowSidebar, showSidebar }: SidebarProps) {
 					src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
 					alt="avatar"
 				/>
-				<div className="text-lg text-white-100 md:font-bold">Alexander Fernandis</div>
+				<div className="text-lg text-white-100 md:font-bold">
+					{currentUser ? currentUser : `Alexander Fernandis`}
+				</div>
 			</div>
 
 			<nav className="mb-16 md:mb-24">
