@@ -4,11 +4,12 @@ import Twitter from '../../assets/images/logos_twitter.png';
 import Facebook from '../../assets/images/bi_facebook.png';
 import Whatsapp from '../../assets/images/dashicons_whatsapp.png';
 import { TwitterShareButton, FacebookShareButton, WhatsappShareButton } from 'react-share';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 function Result() {
 	const [score, setScore] = useState<number>(0);
 	const { quizId } = useParams();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		let memory = localStorage.getItem('result');
@@ -79,7 +80,10 @@ function Result() {
 				</section>
 
 				<section className="text-center">
-					<button className="btn bg-blue-700 rounded-sm w-28 h-10 min-w-0 mb-4 lg:w-36 lg:h-12 lg:font-bold lg:text-lg">
+					<button
+						onClick={() => navigate('/dashboard')}
+						className="btn bg-blue-700 rounded-sm w-28 h-10 min-w-0 mb-4 lg:w-36 lg:h-12 lg:font-bold lg:text-lg"
+					>
 						CONTINUE
 					</button>
 				</section>
