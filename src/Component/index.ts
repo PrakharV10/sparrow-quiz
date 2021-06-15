@@ -6,3 +6,4 @@ export { default as QuestionSideBar } from './QuestionSideBar/QuestionSideBar';
 export { default as QuizCard } from './QuizCard/QuizCard';
 export { default as Sidebar } from './Sidebar/Sidebar';
 export { default as SignupForm } from './SignupForm/SignupForm';
+export { default as ScoreCard } from './ScoreCard/ScoreCard';

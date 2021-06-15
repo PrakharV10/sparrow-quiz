@@ -17,7 +17,7 @@ function App() {
 					payload: { token: JSON.parse(memory).token },
 				});
 		}
-	}, []);
+	}, [authDispatch]);
 
 	return (
 		<div className="App">

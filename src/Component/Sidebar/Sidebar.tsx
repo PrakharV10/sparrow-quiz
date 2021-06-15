@@ -53,16 +53,6 @@ function Sidebar({ setShowSidebar, showSidebar }: SidebarProps) {
 					</li>
 					<li className="h-16 flex justify-center items-center">
 						<NavLink
-							to="/learn"
-							onClick={() => setShowSidebar(false)}
-							className="w-full p-4"
-							activeStyle={activeStyle}
-						>
-							LEARN
-						</NavLink>
-					</li>
-					<li className="h-16 flex justify-center items-center">
-						<NavLink
 							to="/account"
 							onClick={() => setShowSidebar(false)}
 							className="w-full p-4"
