@@ -1,31 +1,30 @@
 type Option = {
-    id: string;
-    option: string;
-    isRight: boolean;
-}
+	_id: string;
+	option: string;
+	isRight: boolean;
+};
 
 type Question = {
-    question: string;
-    options: Option[];
-    pts: number;
-    negativePts: number;
-}
+	question: string;
+	options: Option[];
+	pts: number;
+	negativePts: number;
+};
 
 type Quiz = {
-    id: string;
-    topic: string;
-    image: string;
-    maximum: number;
-    questions: Question[];
-}
+	_id: string;
+	topic: string;
+	image: string;
+	maximum: number;
+	questions: Question[];
+};
 
-type Quizzes = Quiz[]
-
+type Quizzes = Quiz[];
 
 type User = {
-    userId: string
-    email: string;
-    password: string;
-}
+	userId: string;
+	email: string;
+	password: string;
+};
 
-type UserTable = User[]
+type UserTable = User[];

@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import Menu from '../../assets/svg/Menu';
-import QuizCard from '../../Component/QuizCard/QuizCard';
-import Sidebar from '../../Component/Sidebar/Sidebar';
-import { quizzes } from '../../Data/quizQuestion';
+import { QuizCard, Sidebar } from '../../Component';
+import { useQuizzes } from '../../context';
 
 function Dashboard({ showSidebar, setShowSidebar }: SidebarPassingProps) {
+	const { allQuizzes } = useQuizzes();
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		if (allQuizzes.length !== 0) {
+			setIsLoading(false);
+		}
+	}, [allQuizzes]);
+
 	return (
 		<div className="bg-black-800 w-screen min-h-screen">
 			<Sidebar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
@@ -18,15 +27,17 @@ function Dashboard({ showSidebar, setShowSidebar }: SidebarPassingProps) {
 					<span></span>
 				</header>
 
-				<div className="flex justify-evenly flex-wrap w-4/5 m-auto">
-					{quizzes.map((quiz) => {
-						return (
-							<div className="h-content" key={quiz.id}>
-								<QuizCard quiz={quiz} />
-							</div>
-						);
-					})}
-				</div>
+				{!isLoading && (
+					<div className="flex justify-evenly flex-wrap w-4/5 m-auto">
+						{allQuizzes.map((quiz) => {
+							return (
+								<div className="h-content" key={quiz._id}>
+									<QuizCard quiz={quiz} />
+								</div>
+							);
+						})}
+					</div>
+				)}
 			</main>
 		</div>
 	);

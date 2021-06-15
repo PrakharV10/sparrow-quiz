@@ -1,31 +1,48 @@
-const CHECK_LOGIN_DETAILS = 'CHECK_LOGIN_DETAILS';
+const SAVE_LOGIN_DETAILS = 'SAVE_LOGIN_DETAILS';
 const LOGOUT_USER = 'LOGOUT_USER';
-const LOGIN_ON_START = 'LOGIN_ON_START';
-const REGISTER_NEW_USER = 'REGISTER_NEW_USER';
+const LOGIN_BY_LOCAL_STORAGE = 'LOGIN_BY_LOCAL_STORAGE';
+const SAVE_SIGNUP_DETAILS = 'SAVE_SIGNUP_DETAILS';
+const SAVE_USER_DETAILS_FROM_SERVER = 'SAVE_USER_DETAILS_FROM_SERVER';
 
 export const initialAuthState: InitialAuthState = {
 	isUserLoggedIn: false,
-	userId: '',
+	username: '',
+	email: '',
+	authToken: null,
 };
 
 export function authReducer(state: InitialAuthState, action: AuthActionTypes) {
 	switch (action.type) {
-		case CHECK_LOGIN_DETAILS:
+		case SAVE_LOGIN_DETAILS:
 			return {
 				...state,
 				isUserLoggedIn: true,
-				userId: action.payload.response,
+				authToken: action.payload.token,
+				email: action.payload.email,
+				username: action.payload.username,
 			};
 		case LOGOUT_USER:
-			return { ...state, isUserLoggedIn: false, userId: '' };
-		case LOGIN_ON_START:
+			return { ...state, isUserLoggedIn: false };
+		case LOGIN_BY_LOCAL_STORAGE:
 			return {
 				...state,
 				isUserLoggedIn: true,
-				userId: action.payload.response,
+				authToken: action.payload.token,
 			};
-		case REGISTER_NEW_USER:
-			return { ...state, isUserLoggedIn: true, userId: action.payload.response };
+		case SAVE_SIGNUP_DETAILS:
+			return {
+				...state,
+				isUserLoggedIn: true,
+				token: action.payload.token,
+				email: action.payload.email,
+				username: action.payload.username,
+			};
+		case SAVE_USER_DETAILS_FROM_SERVER:
+			return {
+				...state,
+				username: action.payload.username,
+				email: action.payload.email,
+			};
 		default:
 			return state;
 	}

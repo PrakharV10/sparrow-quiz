@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../context/context';
-import { userTable } from '../../Data/userTable';
+import { useAuth } from '../../context/authContext';
+import { SERVER_URL } from '../../utils/api';
+import { serverCallHandler } from '../../utils/serverCallHandler';
 
 function LoginForm() {
 	const { authDispatch } = useAuth();
@@ -12,35 +13,53 @@ function LoginForm() {
 		email: '',
 		password: '',
 		loading: false,
+		errorMessage: '',
 	};
 
 	const [localInput, setLocalInput] = useState(localInputInitialState);
 
-	function submitHandler(e: React.FormEvent) {
+	async function submitHandler(e: React.FormEvent) {
 		setLocalInput({ ...localInput, loading: true });
 		e.preventDefault();
-		const user = userTable.find(
-			(user) => user.email === localInput.email && user.password === localInput.password
-		);
-		if (user !== undefined) {
+		await serverAuth();
+		setLocalInput({ ...localInput, loading: false });
+		navigate('/dashboard');
+	}
+
+	async function serverAuth() {
+		const { response } = await serverCallHandler('POST', `${SERVER_URL}/login`, {
+			email: localInput.email,
+			password: localInput.password,
+		});
+		if (response.success) {
+			setLocalInput({ ...localInput, errorMessage: '' });
+			authDispatch({
+				type: 'SAVE_LOGIN_DETAILS',
+				payload: {
+					username: response.data.username,
+					email: response.data.email,
+					token: response.token,
+				},
+			});
 			localStorage.setItem(
 				'Login',
-				JSON.stringify({ userId: user.userId, isUserLoggedIn: true })
+				JSON.stringify({ token: response.token, isUserLoggedIn: true })
 			);
-			authDispatch({
-				type: 'CHECK_LOGIN_DETAILS',
-				payload: { response: user.userId },
-			});
-			setLocalInput({ ...localInput, loading: false });
-			navigate('/dashboard');
+		} else {
+			setLocalInput({ ...localInput, errorMessage: response.message });
 		}
 	}
 
 	return (
 		<form onSubmit={(e) => submitHandler(e)} className="text-center w-full px-7">
-			<header className="hidden mb-10 text-white-100 text-light md:block md:text-2xl xl:text-3xl">
+			<header className="hidden mb-8 text-white-100 text-light md:block md:text-2xl xl:text-3xl">
 				Login
 			</header>
+			{localInput.errorMessage && (
+				<div className="w-full bg-red-600 text-white-100 h-14 font-light text-sm rounded-sm flex justify-center items-center mb-6 md:mb-5">
+					{localInput.errorMessage}
+				</div>
+			)}
 			<input
 				type="mail"
 				placeholder="Email"

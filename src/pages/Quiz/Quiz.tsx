@@ -1,23 +1,25 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { useParams } from 'react-router';
-import ConfirmModal from '../../Component/ConfirmModal/ConfirmModal';
-import QuestionOptions from '../../Component/QuestionOptions/QuestionOptions';
-import QuestionSideBar from '../../Component/QuestionSideBar/QuestionSideBar';
-import { quizzes } from '../../Data/quizQuestion';
+import { QuestionSideBar, ConfirmModal, QuestionOptions } from '../../Component';
+import { useQuizzes } from '../../context';
 import { initialQuizState, quizReducer } from '../../reducer/quizReducer';
 
 function Quiz() {
 	const { quizId } = useParams();
+
 	const [
 		{ currentQuiz, currentQuestionNumber, questionTimer, score, selectedOption, isClicked },
 		dispatch,
 	] = useReducer(quizReducer, initialQuizState);
+
+	const { allQuizzes } = useQuizzes();
+
 	const [isOpen, setIsOpen] = useState(false);
 
 	useEffect(() => {
-		let current = quizzes.find((quiz) => quiz.id === quizId);
+		let current = allQuizzes.find((quiz) => quiz._id === quizId);
 		if (current) dispatch({ type: 'SET_CURRENT_QUIZ', payload: current });
-	}, [quizId]);
+	}, [quizId, allQuizzes]);
 
 	useEffect(() => {
 		const t = setTimeout(() => {

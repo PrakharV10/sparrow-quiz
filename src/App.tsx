@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router';
-import { useAuth } from './context/context';
-import Account from './pages/Account/Account';
-import Dashboard from './pages/Dashboard/Dashboard';
-import Leaderboard from './pages/Leaderboard/Leaderboard';
-import Learn from './pages/Learn/Learn';
-import Login from './pages/Login/Login';
-import Quiz from './pages/Quiz/Quiz';
-import Result from './pages/Result/Result';
-import Signup from './pages/Signup/Signup';
+import { useAuth } from './context/authContext';
+import { Signup, Leaderboard, Login, Quiz, Result, Dashboard, Account } from './pages';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 function App() {
@@ -18,10 +11,11 @@ function App() {
 	useEffect(() => {
 		const memory = localStorage.getItem('Login');
 		if (memory) {
-			authDispatch({
-				type: 'LOGIN_ON_START',
-				payload: { response: JSON.parse(memory).userId },
-			});
+			if (JSON.parse(memory).isUserLoggedIn)
+				authDispatch({
+					type: 'LOGIN_BY_LOCAL_STORAGE',
+					payload: { token: JSON.parse(memory).token },
+				});
 		}
 	}, []);
 
@@ -48,10 +42,7 @@ function App() {
 					path="/account"
 					element={<Account showSidebar={showSidebar} setShowSidebar={setShowSidebar} />}
 				/>
-				<PrivateRoute
-					path="/learn"
-					element={<Learn showSidebar={showSidebar} setShowSidebar={setShowSidebar} />}
-				/>
+				<PrivateRoute path="/learn" element="" />
 			</Routes>
 		</div>
 	);

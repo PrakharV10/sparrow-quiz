@@ -19,11 +19,17 @@ type QuizActionTypes =
 
 type InitialAuthState = {
 	isUserLoggedIn: boolean;
-	userId: string;
+	username: string;
+	email: string;
+	authToken: string | null;
 };
 
 type AuthActionTypes =
-	| { type: 'REGISTER_NEW_USER'; payload: { response: string } }
-	| { type: 'CHECK_LOGIN_DETAILS'; payload: { response: string } }
+	| { type: 'SAVE_SIGNUP_DETAILS'; payload: { username: string; email: string; token: string } }
+	| { type: 'SAVE_LOGIN_DETAILS'; payload: { username: string; email: string; token: string } }
 	| { type: 'LOGOUT_USER' }
-	| { type: 'LOGIN_ON_START'; payload: { response: string } };
+	| { type: 'LOGIN_BY_LOCAL_STORAGE'; payload: { token: string } }
+	| {
+			type: 'SAVE_USER_DETAILS_FROM_SERVER';
+			payload: { userId: string; username: string; email: string };
+	  };

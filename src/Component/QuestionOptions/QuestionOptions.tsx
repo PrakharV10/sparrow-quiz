@@ -1,6 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import correct from '../../assets/svg/correct';
+import { useAuth } from '../../context';
+import { SERVER_URL } from '../../utils/api';
+import { serverCallHandler } from '../../utils/serverCallHandler';
 import updateScore from '../../utils/updateScore.util';
 
 function QuestionOptions({
@@ -15,6 +18,7 @@ function QuestionOptions({
 	setIsOpen,
 }: QuestionOptionsProps) {
 	const navigate = useNavigate();
+	const { authState } = useAuth();
 
 	function calculateAndUpdateScore(option: Option) {
 		const response = updateScore(score, currentQuiz.questions[questionNumber], option);
@@ -24,11 +28,24 @@ function QuestionOptions({
 		});
 	}
 
-	function nextButtonHandler() {
+	async function postScoreToDb() {
+		if (authState.isUserLoggedIn) {
+			const { response } = await serverCallHandler('POST', `${SERVER_URL}/scoreboard`, {
+				quizId,
+				score,
+			});
+			if (response.success) {
+				console.log(response);
+			}
+		}
+	}
+
+	async function nextButtonHandler() {
 		dispatch({ type: 'RESET_SELECTED_OPTION' });
 		dispatch({ type: 'RESET_REGISTERED_CLICK' });
 		if (questionNumber + 1 === currentQuiz.questions.length) {
 			localStorage.setItem('result', JSON.stringify({ quizId, score }));
+			await postScoreToDb();
 			navigate(`/quiz/${quizId}/result`);
 		} else {
 			dispatch({ type: 'INCREASE_QUESTION_NUMBER' });
@@ -85,9 +102,9 @@ function QuestionOptions({
 				return (
 					<div
 						onClick={() => optionClickHandler(option)}
-						key={option.id}
+						key={option._id}
 						className={`${
-							option.id === selectedOption?.id
+							option._id === selectedOption?._id
 								? 'border-blue-700'
 								: 'border-black-700'
 						} border-4 flex justify-between items-center bg-black-700 pr-6 pl-2 py-5 mb-4 text-sm font-light lg:pl-5 lg:text-lg text-white-100 opacity-90 cursor-pointer transition-colors`}

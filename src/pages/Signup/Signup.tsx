@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SignupForm from '../../Component/SignupForm/SignupForm';
-import { useAuth } from '../../context/context';
+import { useAuth } from '../../context/authContext';
 
 function Signup() {
 	const {
