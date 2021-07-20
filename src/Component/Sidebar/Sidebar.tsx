@@ -27,45 +27,35 @@ function Sidebar({ setShowSidebar, showSidebar }: SidebarProps) {
 					: 'transform translate-x-0 opacity-100'
 			}`}
 		>
-			<span className="md:hidden" onClick={() => setShowSidebar(false)}>
+			<span className='md:hidden' onClick={() => setShowSidebar(false)}>
 				<Exit />
 			</span>
-			<div className="pt-8 flex flex-col items-center mb-20 md:pt-12">
+			<div className='pt-8 flex flex-col items-center mb-20 md:pt-12'>
 				<img
-					className="avatar-lg mb-4"
-					src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80"
-					alt="avatar"
+					className='avatar-lg mb-4'
+					src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80'
+					alt='avatar'
 				/>
-				<div className="text-lg text-white-100 md:font-bold">{authState.username}</div>
+				<div className='text-lg text-white-100 md:font-bold'>{authState.username}</div>
 			</div>
 
-			<nav className="mb-16 md:mb-24">
-				<ul className="text-center text-white-100 text-base font-light tracking-widest">
-					<li className="h-16 flex justify-center items-center">
+			<nav className='mb-16 md:mb-24'>
+				<ul className='text-center text-white-100 text-base font-light tracking-widest'>
+					<li className='h-16 flex justify-center items-center'>
 						<NavLink
-							to="/dashboard"
+							to='/dashboard'
 							onClick={() => setShowSidebar(false)}
-							className="w-full p-4"
+							className='w-full p-4'
 							activeStyle={activeStyle}
 						>
 							HOME
 						</NavLink>
 					</li>
-					<li className="h-16 flex justify-center items-center">
+					<li className='h-16 flex justify-center items-center'>
 						<NavLink
-							to="/account"
+							to='/leaderboard'
 							onClick={() => setShowSidebar(false)}
-							className="w-full p-4"
-							activeStyle={activeStyle}
-						>
-							ACCOUNT
-						</NavLink>
-					</li>
-					<li className="h-16 flex justify-center items-center">
-						<NavLink
-							to="/leaderboard"
-							onClick={() => setShowSidebar(false)}
-							className="w-full p-4"
+							className='w-full p-4'
 							activeStyle={activeStyle}
 						>
 							LEADERBOARD
@@ -73,10 +63,10 @@ function Sidebar({ setShowSidebar, showSidebar }: SidebarProps) {
 					</li>
 				</ul>
 			</nav>
-			<div className="text-center">
+			<div className='text-center'>
 				<button
 					onClick={logOutHandler}
-					className="btn bg-blue-700 text-blue-100 min-w-0 w-28 text-md font-medium h-10 md:h-12 md:w-40 hover:bg-blue-600"
+					className='btn bg-blue-700 text-blue-100 min-w-0 w-28 text-md font-medium h-10 md:h-12 md:w-40 hover:bg-blue-600'
 				>
 					SIGNOUT
 				</button>
