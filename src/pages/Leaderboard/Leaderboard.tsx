@@ -22,7 +22,7 @@ function Leaderboard({ showSidebar, setShowSidebar }: SidebarPassingProps) {
 	return (
 		<div className='bg-black-800 w-screen min-h-screen h-full'>
 			<Sidebar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
-			<main className='h-screen md:ml-80 md:pt-5 text-blue-100 text-lg'>
+			<main className='min-h-screen h-full md:ml-80 md:pt-5 text-blue-100 text-lg'>
 				<header className='p-4 pb-8 flex justify-between items-center md:justify-center md:pb-10'>
 					<span className='md:hidden' onClick={() => setShowSidebar(true)}>
 						<Menu />
